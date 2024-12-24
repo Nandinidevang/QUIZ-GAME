@@ -1,0 +1,56 @@
+# QUIZ-GAME
+/* Develop a simple quiz game that presents multiple choice questions to the user. The game should keep track of the user's score and provide feedback based on their answers.*/
+
+   #include<stdio.h>
+  void display(const char *ques, const char *options[], char correctOption, int *score)
+  {
+          char answer;
+          printf("\n%s\n",ques);
+          for(int i=0;i<4;i++)
+        {
+                  printf("%c. %s\n",'A'+i,options[i]);
+          }
+          printf("Your answer: ");
+          scanf(" %c",&answer);
+ 
+         if(answer == correctOption || answer == correctOption +32)
+          {
+                  printf("\e[32mCorrect!\n\e[0m");
+                  (*score)++;
+          }
+          else
+          {
+                  printf("\e[31mWrong! The correct answer is %c.\n\e[0m",correctOption);
+          }
+ }
+  int main()
+ {
+          int score=0;
+          const char *options1[] = {"Paris", "London", "Rome", "Berlin"};
+          const char *options2[] = {"Earth", "Venus", "Mercury", "Mars"};
+          const char *options3[] = {"Elephant", "Blue Whale", "Giraffe", "Shark"};
+          printf("\e[36mWelcome to the Quiz Game!\n");
+          printf("Answer the following questions:\n\e[0m");
+display("1. What is the capital of France?", options1, 'A', &score);
+          display("2. Which planet is closest to the sun?", options2, 'C', &score);
+        display("3. Which is the largest animal on earth?", options3, 'B', &score);
+ 
+          printf("\n\e[32mQuiz Over! Your total score is:  %d/3\n\e[0m",score);
+          if(score == 3)
+          {
+                  printf("\e[35mExcellent work!\n\e[0m");
+          }
+          else if(score == 2)
+          {
+                  printf("\e[34mGood Job!\n\e[0m");
+         }
+          else if(score == 1)
+          {
+                  printf("\e[33mBetter luck next time!\n\e[0m");
+          }
+          else
+                  printf("\e[31mYou need more practice!\n\e[0m");
+          return 0;
+  }
+
+
